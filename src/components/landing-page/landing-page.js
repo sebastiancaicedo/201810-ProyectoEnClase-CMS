@@ -33,10 +33,12 @@ class LandingPage extends React.Component {
                 </section>
                 <section>
                     <article>
-
-                    </article>
-                    <article>
-                        
+                        <div flex={1}>
+                            aaaaaaaaaa
+                        </div>
+                        <div flex={1}>
+                            aaaaaaaaaa
+                        </div>
                     </article>
                 </section>
             </section>
