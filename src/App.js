@@ -6,7 +6,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 import CenterContainer from './components/centercontainer.js';
 import Login from './components/login.js';
-
+import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
 import LandingPage from "./components/landing-page/landing-page.js";
 
 const style = {

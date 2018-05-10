@@ -1,11 +1,10 @@
 import React from 'react';
 
-import { AutoRotatingCarousel, Slide } from 'material-auto-rotating-carousel'
-import { green400, green600, blue400, blue600, red400, red600 } from 'material-ui/styles/colors'
+import { Carousel } from 'react-responsive-carousel';
 
 import "./../../css/landing-page/landing-page.css"
 
-class Carousel extends React.Component {
+class LandingCarousel extends React.Component {
 
     constructor() {
         super();
@@ -13,36 +12,22 @@ class Carousel extends React.Component {
 
     render() {
         return (
-            <div>
-                <AutoRotatingCarousel
-                    label="Get started"
-                    open
-                >
-                    <Slide
-                        media={<img src="http://www.icons101.com/icon_png/size_256/id_79394/youtube.png" />}
-                        mediaBackgroundStyle={{ backgroundColor: red400 }}
-                        contentStyle={{ backgroundColor: red600 }}
-                        title="This is a very cool feature"
-                        subtitle="Just using this will blow your mind."
-                    />
-                    <Slide
-                        media={<img src="http://www.icons101.com/icon_png/size_256/id_80975/GoogleInbox.png" />}
-                        mediaBackgroundStyle={{ backgroundColor: blue400 }}
-                        contentStyle={{ backgroundColor: blue600 }}
-                        title="Ever wanted to be popular?"
-                        subtitle="Well just mix two colors and your are good to go!"
-                    />
-                    <Slide
-                        media={<img src="http://www.icons101.com/icon_png/size_256/id_76704/Google_Settings.png" />}
-                        mediaBackgroundStyle={{ backgroundColor: green400 }}
-                        contentStyle={{ backgroundColor: green600 }}
-                        title="May the force be with you"
-                        subtitle="The Force is a metaphysical and ubiquitous power in the Star Wars universe."
-                    />
-                </AutoRotatingCarousel>
-            </div>
+            <Carousel width="50vw" dynamicHeight>
+                <div>
+                    <img src="https://maxcdn.icons8.com/app/uploads/2016/03/material-1-1000x563.jpg" />
+                    <p className="legend">Legend 1</p>
+                </div>
+                <div>
+                    <img src="https://maxcdn.icons8.com/app/uploads/2016/03/material-1-1000x563.jpg" />
+                    <p className="legend">Legend 2</p>
+                </div>
+                <div>
+                    <img src="https://maxcdn.icons8.com/app/uploads/2016/03/material-1-1000x563.jpg" />
+                    <p className="legend">Legend 3</p>
+                </div>
+            </Carousel>
         );
     }
 }
 
-export default Carousel;
+export default LandingCarousel;
