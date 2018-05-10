@@ -5,13 +5,15 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import Paper from 'material-ui/Paper';
 import Checkbox from 'material-ui/Checkbox'
-
 import CenterContainer from './centercontainer.js';
 
 import {Link} from 'react-router-dom';
 
+import {logIn, getUserById} from './../API/api.js';
+import home from './home';
+
 /*propsTypes = {
-    signOutPath = 'string', //the sign out page path
+    signupPath = 'string', //the sign out page path
     forgotPasswordPath = 'string //the forgot password page path
     handleSuccessfulLogin = 'Method' //a method to execute when login succesful, receives a parameter the loggedResult
 }*/
@@ -22,11 +24,11 @@ const textFieldStyles = {
 
 class Login extends React.Component{
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
-			emailInput:'',
-			passwordInput:''
+			emailInput: null,
+			passwordInput: null
         }
         this.handleTextChange = this.handleTextChange.bind(this);
         this.handleSumbit = this.handleSumbit.bind(this);
@@ -46,29 +48,20 @@ class Login extends React.Component{
             password: this.state.passwordInput
         };
 
-        /*if(this.props.handleLogin != null){
+        logIn(credentials)
+        .then(result =>{
+            
+            getUserById(result.user.uid)
+            .then(_user=>{
 
-            this.props.handleLogin(credentials)
-
-            .then((result)=>{
-                console.log('login succesful');
-                if(this.props.handleSuccessfulLogin != null){
-                    this.props.handleSuccessfulLogin(result);
-                }
-                else{
-                    console.log('No handleSuccessfulLogin prop [Method = myMethod(loginReturn={return properties})]');
-                }
-            })
-
-            .catch((error) =>{
-
-                document.getElementById('tfPassword').value = '';
-                console.log('error: ' + error);
+                this.props.history.push('/home');
+                this.props.handleSuccessfulLogin(_user);
             });
-        }
-        else{
-            console.log('No handleLogin prop [Promise = myPromise(credentials={email, password})]')
-        }*/
+        })
+
+        .catch(error =>{
+            console.log(error);
+        });
     }
 
     render(){
@@ -87,7 +80,7 @@ class Login extends React.Component{
                             style={textFieldStyles}/>
                         <TextField
                             id='tfPassword'
-                            name='passworInput'
+                            name='passwordInput'
                             onChange={this.handleTextChange}
                             type = 'password'
                             hintText = 'Type your Password'
@@ -111,11 +104,11 @@ class Login extends React.Component{
                             <span></span>
                             :
                             <div>
-                                <Link className='text-right small' to={this.props.forgoPasswordPath != null? this.props.forgoPasswordPath : 'No forgotPasswordPath prop [string]'}>Forgot password?</Link>
+                                <Link className='text-right small' to={this.props.forgotPasswordPath != null? this.props.forgotPasswordPath : 'No forgotPasswordPath prop [string]'}>Forgot password?</Link>
                             </div>
                         }
                         <br/>
-                        <p className='small'>Not registered? <Link to={this.props.signOutPath != null?this.props.signOutPath:'No signOutPath prop [string]'}>Create an account</Link> </p>
+                        <p className='small'>Not registered? <Link to={this.props.signupPath != null?this.props.signupPath:'No signOutPath prop [string]'}>Create an account</Link> </p>
                     </div>
                 </form>
             </Paper>
