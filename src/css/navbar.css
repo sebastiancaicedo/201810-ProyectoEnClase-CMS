@@ -1,0 +1,11 @@
+.navbar-pages{
+    display: flex;
+    flex-grow: 3;
+    align-items: center;
+}
+
+.signbutton{
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+}
