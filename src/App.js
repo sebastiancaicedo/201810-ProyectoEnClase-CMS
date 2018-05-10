@@ -7,7 +7,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import CenterContainer from './components/centercontainer.js';
 import Login from './components/login.js';
 import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
-import LandingPage from "./components/landing-page/landing-page.js";
+import EditCourse from "./components/edit-course-page/edit-course-page";
 
 const style = {
 
@@ -20,7 +20,7 @@ class App extends Component {
       <MuiThemeProvider className="App">
         <Router>
           <main>
-            <LandingPage />
+            <EditCourse />
             {
             /*
             <Login type='' />
