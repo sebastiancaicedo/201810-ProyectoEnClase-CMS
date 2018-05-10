@@ -19,6 +19,10 @@ class LandingPage extends React.Component {
             color: 'white',
             marginTop: '1%'
         }
+        const container = {
+            display: 'flex',
+            justifyContent: 'space-around'
+        }
         return (
             <section>
                 <AppBar
@@ -32,12 +36,12 @@ class LandingPage extends React.Component {
                 <LandingCarousel /> 
                 </section>
                 <section>
-                    <article>
-                        <div flex={1}>
-                            aaaaaaaaaa
+                    <article style={container}>
+                        <div>
+                            <img src="https://2.bp.blogspot.com/-88oUjcIU568/VywRvSgYLhI/AAAAAAAADHg/-8BffRe6qAIdfGzYcOphUkgv-olK-5hzwCLcB/s1600/rom-blu-studio-5.0-c-d536-generic.jpg" style={{width: '300px'}} />
                         </div>
-                        <div flex={1}>
-                            aaaaaaaaaa
+                        <div>
+                            <img src="https://2.bp.blogspot.com/-88oUjcIU568/VywRvSgYLhI/AAAAAAAADHg/-8BffRe6qAIdfGzYcOphUkgv-olK-5hzwCLcB/s1600/rom-blu-studio-5.0-c-d536-generic.jpg" style={{width: '300px'}} />
                         </div>
                     </article>
                 </section>
