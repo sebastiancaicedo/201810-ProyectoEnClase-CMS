@@ -298,7 +298,7 @@ class Cursos extends React.Component {
             if(this.state.searchString === null){
               return(
                 <TableRow key={course.id} hoverable={true} >
-                  <TableRowColumn><Link to={'/courses/:'+course.id}>{course.name}</Link></TableRowColumn>
+                  <TableRowColumn><Link to={`/courses/${course.id}`}>{course.name}</Link></TableRowColumn>
                   <TableRowColumn>{course.participants}</TableRowColumn>
                   <TableRowColumn>{course.description}</TableRowColumn>
                 </TableRow>
@@ -308,7 +308,7 @@ class Cursos extends React.Component {
               if(course.name.toLowerCase().indexOf(this.state.searchString) > -1){
                 return(
                     <TableRow key={course.id} hoverable={true} >
-                      <TableRowColumn><Link to={'/courses/:'+course.id}>{course.name}</Link></TableRowColumn>
+                      <TableRowColumn><Link to={`/courses/${course.id}`}>{course.name}</Link></TableRowColumn>
                       <TableRowColumn>{course.participants}</TableRowColumn>
                       <TableRowColumn>{course.description}</TableRowColumn>
                     </TableRow>
