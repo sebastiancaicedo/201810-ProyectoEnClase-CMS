@@ -13,21 +13,19 @@ class Home extends React.Component{
     render(){
         return(
             <div className='home'>
-                {/*<h1>Home auth</h1>*/}
+            {
+                this.props.loggedUser.role === 'admin'?
                 <Tabs>
-                    <Tab label="Cursos" >
+                    <Tab label="Courses" >
                         <Cursos {...this.props} />
                     </Tab>
-                    {console.log(this.props.loggedUser.role)}
-                    {
-                        this.props.loggedUser.role === 'admin'?
-                        <Tab label="Usuarios" >
-                            <Usuarios {...this.props} />
-                        </Tab>
-                        :
-                        <span></span>
-                    }
+                    <Tab label="Users" >
+                        <Usuarios {...this.props} />
+                    </Tab>
 				</Tabs>
+                :
+                <Cursos {...this.props} />
+            }
             </div>
         );
     }

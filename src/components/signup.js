@@ -47,7 +47,8 @@ class Signup extends React.Component{
                     id: result.user.uid,
                     name: this.state.nameInput,
                     email: this.state.emailInput,
-                    role: "user"
+                    role: 'user',
+                    status: 'active'
                 }
 
                 saveUserInDb(_user)
