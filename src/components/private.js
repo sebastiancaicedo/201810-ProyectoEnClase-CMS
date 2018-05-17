@@ -18,7 +18,7 @@ class Private extends React.Component{
             <div className='private'>
                 <Route exact path='/' component={(props) => <Landing {...props} /> } />
                 <Route path='/home' component={(props) => <Home {...props} {...this.props} />} />
-                <Route path='/course/:courseId' component={(props)=> <Course {...props} /> } />
+                <Route path='/courses/:courseId' component={(props)=> <Course {...props} /> } />
             </div>
         );
     }
