@@ -77,7 +77,8 @@ import firebase from 'firebase';
       return firebase.database().ref('/courses/'+course.id).set({
         name: course.name,
         participants: course.participants,
-        description: course.description
+        description: course.description,
+        sesions: course.sesions
       })
   }
 
@@ -112,7 +113,8 @@ import firebase from 'firebase';
         id: courseId,
         name: val.name,
         participants: parseInt(val.participants),
-        description: val.description
+        description: val.description,
+        sesions: val.sesions
       }
       
       return _course;

@@ -137,7 +137,8 @@ class Cursos extends React.Component {
 
         name: courseName,
         participants: 0,
-        description: courseDescription
+        description: courseDescription,
+        sesions: [{name: '0', isOpen: true}]
       }
 
       saveNewCourseInDb(_course)
@@ -159,7 +160,8 @@ class Cursos extends React.Component {
           id: this.state.selectedCourse.id,
           name: courseName === ''? this.state.selectedCourse.name : courseName,
           participants: this.state.selectedCourse.participants,
-          description: courseDescription === ''? this.state.selectedCourse.description : courseDescription
+          description: courseDescription === ''? this.state.selectedCourse.description : courseDescription,
+          sesions: this.state.selectedCourse.sesions
         }
 
         saveCourseInDb(_course)
