@@ -21,7 +21,7 @@ import PopUp from './popup.js';
 import { getUsers, saveUserInDb } from '../API/api';
 
 const ROLES_TYPES = ['admin', 'user'];
-const STATUS_TYPES = ['active', 'desactivated'];
+const STATUS_TYPES = ['active', 'deactivated'];
 
 const UserOptions = (props) => (
   <IconMenu
