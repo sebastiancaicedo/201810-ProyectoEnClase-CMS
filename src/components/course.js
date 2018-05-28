@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {getCourseById, saveCourseInDb} from './../API/api.js';
+import {getCourseById, saveCourseInDb, saveForum, deleteForumMessage} from './../API/api.js';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton/FlatButton';
 import IconMenu from 'material-ui/IconMenu'
@@ -57,10 +57,17 @@ class Course extends React.Component{
             sesions: [...this.state.course.sesions, {name: parseInt(this.state.course.sesions[this.state.course.sesions.length-1].name) + 1, isOpen:true}]
         }
 
+        let forum = {title : 'Mesaje de Bienvenida'}
+
         saveCourseInDb(_course)
         .then(result => {
             console.log("sesion added");
             this.setState({course: _course});
+
+            saveForum(_course.id, _course.sesions[_course.sesions.length-1].name, forum)
+            .then(result=>{
+                console.log("guardado foro");
+            })
         })
 
         .catch(error=>{
@@ -91,10 +98,14 @@ class Course extends React.Component{
 
                 let _course={};
                 let _sesions = [];
+                let selectedSesionMessage;
                 for (let index = 0; index < this.state.course.sesions.length; index++) {
                     const element = this.state.course.sesions[index];
                     if(index !== this.state.selectedSesionIndex){
                         _sesions.push(element)
+                    }
+                    else{
+                        selectedSesionMessage = index;
                     }
                 }
                 Object.assign(_course, this.state.course)
@@ -103,7 +114,11 @@ class Course extends React.Component{
                 saveCourseInDb(_course)
                 .then(result =>{
 
-                    this.setState({course: _course});
+                    deleteForumMessage(_course.id, selectedSesionMessage)
+                    .then(result =>{
+
+                        this.setState({course: _course});
+                    })
                 })
 
                 .catch(error =>{
@@ -156,7 +171,7 @@ class Course extends React.Component{
                             this.state.course.sesions.map((sesion, index) =>{
                                 return(
                                     <div key={index} style={{alignItems:'center'}}>
-                                        <RaisedButton secondary={true} label={`sesion ${sesion.name}`} disabled={!sesion.isOpen} />
+                                        <RaisedButton onClick={()=> this.props.history.push(`/courses/${this.state.course.id}/${sesion.name}`)} secondary={true} label={`sesion ${sesion.name}`} disabled={!sesion.isOpen} />
                                         {
                                             this.props.loggedUser.role === 'admin'?
                                                 <SesionMenu sesion={sesion} sesionsAmount={this.state.course.sesions.length} onOptionClick={()=> {this.setState({selectedSesionIndex: index})}} onSesionMenuItemClick={this.onSesionMenuItemClick} />
