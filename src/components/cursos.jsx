@@ -13,6 +13,7 @@ import FontIcon from 'material-ui/FontIcon';
 import Divider from 'material-ui/Divider';
 import Menu from 'material-ui/Menu';
 import {Route} from 'react-router-dom';
+import logo from './Cursos.jpg'
 
 import {
   TableHeaderColumn,
@@ -307,20 +308,17 @@ class Cursos extends React.Component {
 
       <Table >
         <TableHeader deselectOnClickaway={true} showRowHover= {false} selectable ={true} displaySelectAll={false}  adjustForCheckbox={false}>
-          <TableRow>
-            <TableHeaderColumn>Course Name</TableHeaderColumn>
-            <TableHeaderColumn>Participants</TableHeaderColumn>
-            <TableHeaderColumn>Description</TableHeaderColumn>
-          </TableRow>
         </TableHeader>
         <TableBody displayRowCheckbox={false}>
         {
           this.state.courses.map(course => {
             if(this.state.searchString === null){
               return(
+               
                 <TableRow key={course.id} hoverable={true} >
+   
+                  <TableRowColumn><img src={logo}/></TableRowColumn>
                   <TableRowColumn><Link to={`/courses/${course.id}`}>{course.name}</Link></TableRowColumn>
-                  <TableRowColumn>{course.participants}</TableRowColumn>
                   <TableRowColumn>{course.description}</TableRowColumn>
                 </TableRow>
               );
@@ -328,10 +326,10 @@ class Cursos extends React.Component {
             else{
               if(course.name.toLowerCase().indexOf(this.state.searchString) > -1){
                 return(
-                    <TableRow key={course.id} hoverable={true} >
-                      <TableRowColumn><Link to={`/courses/${course.id}`}>{course.name}</Link></TableRowColumn>
-                      <TableRowColumn>{course.participants}</TableRowColumn>
-                      <TableRowColumn>{course.description}</TableRowColumn>
+                    <TableRow key={course.id} hoverable={true} >                
+                    <TableRowColumn><img src={logo}/></TableRowColumn>
+                    <TableRowColumn><Link to={`/courses/${course.id}`}>{course.name}</Link></TableRowColumn>
+                    <TableRowColumn>{course.description}</TableRowColumn>
                     </TableRow>
                 );
               }
@@ -354,6 +352,7 @@ class Cursos extends React.Component {
                 handleClose={this.closeDialog} 
                 submitButtonText= {this.state.courseAction === 'delete'? 'Confirm' : 'Save'}
         />
+        
       </div>
       :
       <span></span>
