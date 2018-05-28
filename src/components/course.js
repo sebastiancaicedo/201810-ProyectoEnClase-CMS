@@ -154,11 +154,11 @@ class Course extends React.Component{
             <div className='course-info'>
             {
                 this.state.course !== null?
-                <div>
+                <div style={ {padding: '5%'} }>
                     <h1>{`Informacion del curso ${this.state.course.id}`}</h1>
-                    <p>{this.state.course.name}</p>
-                    <p>{this.state.course.participants}</p>
-                    <p>{this.state.course.description}</p>
+                    <h2>Nombre del curso: {this.state.course.name}</h2>
+                    <h6>Número de participantes: {this.state.course.participants}</h6>
+                    <h5>Desripción del curso: {this.state.course.description}</h5>
                     <div>
                         <h3>Sesions</h3>
                         {
