@@ -25,26 +25,26 @@ class LandingPage extends React.Component {
         }
         return (
             <section>
-                <AppBar
+                {/* <AppBar
                     title={<span style={styles.title}>Title</span>}
                     showMenuIconButton={false}
                 >
                     <FlatButton style={buttonStyle} label="Log In" />
                     <FlatButton style={buttonStyle} label="Sign Up" />
-                </AppBar>
-                <section>
+                </AppBar> */}
+                <article>
                 <LandingCarousel /> 
-                </section>
-                <section>
-                    <article style={container}>
+                </article>
+                <article>
+                    <section style={container}>
                         <div>
                             <img src="https://2.bp.blogspot.com/-88oUjcIU568/VywRvSgYLhI/AAAAAAAADHg/-8BffRe6qAIdfGzYcOphUkgv-olK-5hzwCLcB/s1600/rom-blu-studio-5.0-c-d536-generic.jpg" style={{width: '300px'}} />
                         </div>
                         <div>
                             <img src="https://2.bp.blogspot.com/-88oUjcIU568/VywRvSgYLhI/AAAAAAAADHg/-8BffRe6qAIdfGzYcOphUkgv-olK-5hzwCLcB/s1600/rom-blu-studio-5.0-c-d536-generic.jpg" style={{width: '300px'}} />
                         </div>
-                    </article>
-                </section>
+                    </section>
+                </article>
             </section>
         );
     }

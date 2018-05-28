@@ -2,7 +2,8 @@ import React from 'react';
 
 import { Carousel } from 'react-responsive-carousel';
 
-import "./../../css/landing-page/landing-page.css"
+import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
+import "../../css/landing-page/landing-page.css"
 
 class LandingCarousel extends React.Component {
 
