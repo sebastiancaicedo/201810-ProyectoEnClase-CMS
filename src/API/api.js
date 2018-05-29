@@ -151,7 +151,38 @@ import firebase from 'firebase';
       resolve(user)
       })
   });
+
+  export function getForum(courseId, sesionId){
+    
+      return new Promise((resolve, reject) =>{
+        firebase.database().ref(`/forums/${courseId}/${sesionId}`).on('value', snapshot => {
+          const forums = snapshot.val();
+          let _forums= [];
+          for(let forum in forums){
+            _forums.push({
+              title: forums[forum]
+            });
+          }
   
+          resolve(_forums);
+  
+        });
+      });
+  }
+
+  export function saveForum(courseId, sesionName, forum){
+    return firebase.database().ref(`/forums/${courseId}/${sesionName}`).set({
+      title: forum.title
+    })
+  }
+
+  export function deleteForums(courseId){
+    return firebase.database().ref("/forums/"+courseId).remove();
+  }
+  
+  export function deleteForumMessage(courseId, sesionName){
+    return firebase.database().ref(`/forums/${courseId}/${sesionName}`).remove();
+  }
   /*export function uploadFile(file){
       return firebase.storage().ref('images/').child(file.name).put(file);
   }*/

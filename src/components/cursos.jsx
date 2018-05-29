@@ -23,7 +23,7 @@ import {
   TableHeader,
 } from 'material-ui/Table';
 
-import {saveNewCourseInDb, getCourses, saveCourseInDb, deleteCourseById} from './../API/api.js';
+import {saveNewCourseInDb, getCourses, saveCourseInDb, deleteCourseById, saveForum, deleteForums} from './../API/api.js';
 import {Link} from 'react-router-dom';
 
 import PopUp from './popup.js';
@@ -141,10 +141,23 @@ class Cursos extends React.Component {
         sesions: [{name: '0', isOpen: true}]
       }
 
+      let forum = {
+
+        title: 'Mensaje de Bienvenida',
+      }
+
       saveNewCourseInDb(_course)
       .then(result => {
         console.log(result);
+        const courseId = result.path.pieces_[1];
+
         console.log('curso guardado');
+
+        saveForum(courseId, '0', forum)
+        .then(result =>{
+
+          console.log("forum guardado");
+        })
 
       })
 
@@ -181,10 +194,16 @@ class Cursos extends React.Component {
     else
       if(this.state.courseAction === 'delete'){
 
+        const courseId = this.state.selectedCourse.id;
         deleteCourseById(this.state.selectedCourse.id)
         .then(result =>{
           console.log(result);
           console.log('course deleted');          
+
+          deleteForums(courseId)
+          .then(result =>{
+            console.log('forum borrado');
+          })
         })
 
         .catch(error =>{
